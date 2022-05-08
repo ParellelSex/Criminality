@@ -48,7 +48,7 @@ local function shapeBox(box)
    -- TL >> BL | TL >> TR | TR >> BR | BL >> BR |
    local mag = (plr.Character:WaitForChild("HumanoidRootPart").Position - box["Player"].Handle.Position).Magnitude
    box[5].Position = Vector2.new(YE.X, YE.Y)
-   box[5].Text = box["Player"].Handle.Name
+   box[5].Text = box["Player"].Handle.Parent.Name
    -- Left line
    box[1].From = Vector2.new(TL.X, TL.Y) --TL is still a vector3 so you have to take the x and y
    box[1].To = Vector2.new(BL.X, BL.Y)
