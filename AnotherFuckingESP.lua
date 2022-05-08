@@ -80,7 +80,7 @@ spawn(function()
      --Manage created boxes
      for i, v in ipairs(boxes) do -- You could use next, I have a habit of ipairs
          local player = v["Player"] --Get the player from the box list
-         if player and player:FindFirstChild("Handle") and player.Parent = settings["Path"] and settings["Visible"] == true then --Without the player being loaded and having a HumanoidRootPart then the esp can't work
+         if player and player:FindFirstChild("Handle") and player.Parent == settings["Path"] and settings["Visible"] == true then --Without the player being loaded and having a HumanoidRootPart then the esp can't work
              shapeBox(v)
              local _, withinScreenBounds = camera:WorldToScreenPoint(player.Handle.Position) --Withinscreenbounds will be if the player is on our screen
              if withinScreenBounds then
