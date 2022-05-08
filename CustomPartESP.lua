@@ -40,15 +40,15 @@ local function shapeBox(box)
    local player = box["Player"]
    -- The humanoidrootpart's cframe * cframe.new(-5,5,0) is top left, while * cframe.new(5,-5,0) is bottom right
    -- CFrame.p returns the position and using camera:WorldToViewportPoint(worldPos) returns the screen point
-   local TL = camera:WorldToViewportPoint(box["Player"][settings["Part"]].CFrame * CFrame.new(-3,3,0).p)
-   local TR = camera:WorldToViewportPoint(box["Player"][settings["Part"]].CFrame * CFrame.new(3,3,0).p)
-   local BL = camera:WorldToViewportPoint(box["Player"][settings["Part"]].CFrame * CFrame.new(-3,-3,0).p)
-   local BR = camera:WorldToViewportPoint(box["Player"][settings["Part"]].CFrame * CFrame.new(3,-3,0).p)
-   local YE = camera:WorldToViewportPoint(box["Player"][settings["Part"]].CFrame.p)
+   local TL = camera:WorldToViewportPoint(box["Player"].MeshPart.CFrame * CFrame.new(-3,3,0).p)
+   local TR = camera:WorldToViewportPoint(box["Player"].MeshPart.CFrame * CFrame.new(3,3,0).p)
+   local BL = camera:WorldToViewportPoint(box["Player"].MeshPart.CFrame * CFrame.new(-3,-3,0).p)
+   local BR = camera:WorldToViewportPoint(box["Player"].MeshPart.CFrame * CFrame.new(3,-3,0).p)
+   local YE = camera:WorldToViewportPoint(box["Player"].MeshPart.CFrame.p)
    -- TL >> BL | TL >> TR | TR >> BR | BL >> BR |
-   local mag = (plr.Character:WaitForChild("HumanoidRootPart").Position - box["Player"][settings["Part"]].Position).Magnitude
+   local mag = (plr.Character:WaitForChild("HumanoidRootPart").Position - box["Player"].MeshPart.Position).Magnitude
    box[5].Position = Vector2.new(YE.X, YE.Y)
-   box[5].Text = box["Player"][settings["Part"]].Parent.Name
+   box[5].Text = box["Player"].MeshPart.Parent.Name
    -- Left line
    box[1].From = Vector2.new(TL.X, TL.Y) --TL is still a vector3 so you have to take the x and y
    box[1].To = Vector2.new(BL.X, BL.Y)
@@ -81,9 +81,9 @@ spawn(function()
      --Manage created boxes
      for i, v in ipairs(boxes) do -- You could use next, I have a habit of ipairs
          local player = v["Player"] --Get the player from the box list
-         if player and player:FindFirstChild(settings["Part"]) and settings["Visible"] == true then --Without the player being loaded and having a HumanoidRootPart then the esp can't work
+         if player and player:FindFirstChild("MeshPart") and settings["Visible"] == true then --Without the player being loaded and having a HumanoidRootPart then the esp can't work
              shapeBox(v)
-             local _, withinScreenBounds = camera:WorldToScreenPoint(player[settings["Part"]].Position) --Withinscreenbounds will be if the player is on our screen
+             local _, withinScreenBounds = camera:WorldToScreenPoint(player.MeshPart.Position) --Withinscreenbounds will be if the player is on our screen
              if withinScreenBounds then
                  visBox(v,true)
              else
