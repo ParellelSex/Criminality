@@ -24,7 +24,7 @@ local function newText(text) --Create and return a line to use
     text.Visible = true
     text.Size = 19
     text.Center = true
-    text.Color = Color3.fromRGB(80, 50, 168)
+    text.Color = settings["Color"]
     text.Outline = true
     text.Font = Drawing.Fonts.Plex
    return text
