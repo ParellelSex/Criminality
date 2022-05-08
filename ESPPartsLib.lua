@@ -70,7 +70,7 @@ local function hasBox(player)
        if v["Player"] == player then return true end
    end
 end
-spawn(function()
+return settings
   RS.RenderStepped:connect(function() -- On my first box esp I was told "- Make sure you put the ESP in render stepped connection or it will look like a 1980's computer is running it" - CornCatCornDog
      --Give boxes to players than need it
      for i, player in ipairs(settings["Path"]:GetChildren()) do
@@ -96,5 +96,3 @@ spawn(function()
          end
      end
   end)
-end)
-return settings
