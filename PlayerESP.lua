@@ -11,7 +11,7 @@ function settings:FixColor()
 end
 local function newLine() --Create and return a line to use
    local v = Drawing.new("Line")
-   v.Color = Color3.fromRGB(80, 50, 168)
+   v.Color = settings["Color"]
    v.From = Vector2.new(1,1)
    v.To = Vector2.new(0,0)
    v.Visible = true
