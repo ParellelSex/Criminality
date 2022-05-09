@@ -53,9 +53,9 @@ getgenv().settings = {
 }
 local playeresp = loadstring(game:HttpGet("https://raw.githubusercontent.com/ParellelSex/Criminality/main/PlayerESP.lua"))()
 playeresp:FixColor()
-_G["Theme"]["Selected_Color"] = Color3.fromRGB(50, 168, 82)
-_G["Picker_Colors"][14] = Color3.fromRGB(255, 50, 50)
-_G["Picker_Colors"][1] = Color3.fromRGB(50, 168, 82)
+getgenv()["Theme"]["Selected_Color"] = Color3.fromRGB(50, 168, 82)
+getgenv()["Picker_Colors"][14] = Color3.fromRGB(255, 50, 50)
+getgenv()["Picker_Colors"][1] = Color3.fromRGB(50, 168, 82)
 local Catagory1 = library:NewCategory("Catagory 1")
 Catagory1:NewToggle("Atm ESP",false, function(value)
     atms["Visible"] = value
@@ -106,5 +106,5 @@ Catagory2:NewColorpicker("Player ESP",Color3.fromRGB(50, 168, 82), function(valu
     playeresp:FixColor()
 end)
 Catagory2:NewColorpicker("Selector Color",Color3.fromRGB(50, 168, 82), function(value)
-    _G["Theme"]["Selected_Color"] = value
+    getgenv()["Theme"]["Selected_Color"] = value
 end)
